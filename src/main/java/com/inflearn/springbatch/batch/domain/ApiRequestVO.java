@@ -1,4 +1,4 @@
-package com.inflearn.springbatch.batch.dto;
+package com.inflearn.springbatch.batch.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductVO {
+public class ApiRequestVO {
 
     private Long id;
-    private String name;
-    private int price;
-    private String type;
+    private ProductVO productVO;
+    private String status;
 
 }

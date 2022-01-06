@@ -1,8 +1,8 @@
 package com.inflearn.springbatch.batch.job.file;
 
 import com.inflearn.springbatch.batch.chunk.processor.FileItemProcessor;
-import com.inflearn.springbatch.batch.domain.Prodcut;
-import com.inflearn.springbatch.batch.dto.ProductVO;
+import com.inflearn.springbatch.batch.domain.Product;
+import com.inflearn.springbatch.batch.domain.ProductVO;
 import javax.persistence.EntityManagerFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
@@ -42,7 +42,7 @@ public class FileJobConfiguration {
     @Bean
     public Step fileStep() {
         return stepBuilderFactory.get("fileStep")
-            .<ProductVO, Prodcut>chunk(10)
+            .<ProductVO, Product>chunk(10)
             .reader(fileItemReader(null))
             .processor(fileItemProcessor())
             .writer(fileItemWriter())
@@ -63,18 +63,18 @@ public class FileJobConfiguration {
             .linesToSkip(1)
             // 구분자 길이 구분자 기호가 있다.
             .delimited().delimiter(",")
-            .names("id","name","price","type")
+            .names("name","price","type")
             .build();
     }
 
     @Bean
-    public ItemProcessor<ProductVO, Prodcut> fileItemProcessor() {
+    public ItemProcessor<ProductVO, Product> fileItemProcessor() {
         return new FileItemProcessor();
     }
 
     @Bean
-    public JpaItemWriter<Prodcut> fileItemWriter() {
-        return new JpaItemWriterBuilder<Prodcut>()
+    public JpaItemWriter<Product> fileItemWriter() {
+        return new JpaItemWriterBuilder<Product>()
             .entityManagerFactory(emf)
             .usePersist(true)
             .build();

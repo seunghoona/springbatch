@@ -1,17 +1,17 @@
 package com.inflearn.springbatch.batch.chunk.processor;
 
-import com.inflearn.springbatch.batch.domain.Prodcut;
-import com.inflearn.springbatch.batch.dto.ProductVO;
+import com.inflearn.springbatch.batch.domain.Product;
+import com.inflearn.springbatch.batch.domain.ProductVO;
 import org.modelmapper.ModelMapper;
 import org.springframework.batch.item.ItemProcessor;
 
-public class FileItemProcessor implements ItemProcessor<ProductVO, Prodcut> {
+public class FileItemProcessor implements ItemProcessor<ProductVO, Product> {
 
     @Override
-    public Prodcut process(ProductVO item) throws Exception {
+    public Product process(ProductVO item) {
         ModelMapper modelMapper = new ModelMapper();
 
-        Prodcut map = modelMapper.map(item, Prodcut.class);
+        Product map = modelMapper.map(item, Product.class);
 
         return map;
     }

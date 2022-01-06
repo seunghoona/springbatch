@@ -1,18 +1,15 @@
 package com.inflearn.springbatch.batch.domain;
 
 import static javax.persistence.GenerationType.IDENTITY;
-import static lombok.AccessLevel.PROTECTED;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
 @Entity
-@Getter
-@NoArgsConstructor(access = PROTECTED)
-public class Prodcut {
+@Data
+public class Product {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -23,4 +20,5 @@ public class Prodcut {
     private int price;
 
     private String type;
+
 }

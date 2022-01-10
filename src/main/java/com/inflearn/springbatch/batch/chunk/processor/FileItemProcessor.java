@@ -10,9 +10,7 @@ public class FileItemProcessor implements ItemProcessor<ProductVO, Prodcut> {
     @Override
     public Prodcut process(ProductVO item) throws Exception {
         ModelMapper modelMapper = new ModelMapper();
-
         Prodcut map = modelMapper.map(item, Prodcut.class);
-
         return map;
     }
 }

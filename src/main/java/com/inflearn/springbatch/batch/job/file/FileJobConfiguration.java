@@ -48,6 +48,7 @@ public class FileJobConfiguration {
             .writer(fileItemWriter())
             .build();
     }
+
     @Bean
     @StepScope
     public FlatFileItemReader<ProductVO> fileItemReader (

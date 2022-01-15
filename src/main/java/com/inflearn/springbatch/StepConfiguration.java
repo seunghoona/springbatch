@@ -17,7 +17,7 @@ public class StepConfiguration {
     private final StepBuilderFactory stepBuilderFactory;
 
     @Bean
-    public Job batchJob() {
+    public Job stepJob() {
         return this.jobBuilderFactory.get("stepJob")
                 .start(step1())
                 .next(step2())
